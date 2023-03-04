@@ -1,0 +1,4 @@
+# 11_Problem Solving Paradigm - Brute Force Greedy and Dynamic Programming
+## Complete Search atau dikenal dengan Brute Force adalah suatu metode yang menyelesaikan sebuah permasalahan dengan cara mencari solusi satu per satu.
+## Divide and Conquer adalah metode yang digunakan untuk menyelesaikan sebuah permasalahan dengan membagi permasalahan ke dalam permasalahan yang lebih kecil lalu menyelesaikannya.
+## Dynamic Programming adalah metode untuk pengoptimisasian masalah dengan cara membagi ke dalam sub-masalah yang lebih sederhana dan menggunakan fakta bahwa solusi optimal untuk masalah tersebut adalah solusi optimal untuk sub-masalah tersebut.
