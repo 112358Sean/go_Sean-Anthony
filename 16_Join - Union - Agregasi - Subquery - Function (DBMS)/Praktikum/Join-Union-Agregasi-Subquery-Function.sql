@@ -28,6 +28,7 @@ begin
 delete from transactions where id = transaction_id;
 return 1;
 end$$
+DELIMITER
 
 DELIMITER $$
 create trigger deleteTrigger
@@ -37,6 +38,7 @@ declare trans_id int;
 set trans_id = old.transaction_id;
 delete from transaction_details where transaction_detail_id = trans_id;
 end$$
+DELIMITER
 
 -- 7
 DELIMITER $$
@@ -46,6 +48,7 @@ begin
 delete from transaction_details where id = transaction_id;
 return 1;
 end$$
+DELIMITER
 
 DELIMITER $$
 create trigger updateQty
@@ -55,6 +58,7 @@ declare total_qty int;
 set total_qty = (select total_qty from transactions where transaction_id = old.transaction_detail_id);
 update transaction SET total_qty = total_qty2 - old.qty where id = old.transaction_id;
 end$$
+DELIMITER
 
 -- 8
 select * from products where product_id not in (select product_id from transaction_details);
