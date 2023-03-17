@@ -22,10 +22,10 @@ join users u on u.user_id = t.user_id;
 
 -- 6
 DELIMITER $$
-create function deleteTransaction(transaction_id int)
+create function deleteTransaction (p_transaction_id int)
 returns int deterministic
 begin
-delete from transactions where id = transaction_id;
+delete from transactions where transaction_id = p_transaction_id;
 return 1;
 end$$
 DELIMITER
@@ -42,10 +42,10 @@ DELIMITER
 
 -- 7
 DELIMITER $$
-create function deleteTransDetail(transaction_id int)
+create function deleteTransDetail(p_transaction_id int)
 returns int deterministic
 begin
-delete from transaction_details where id = transaction_id;
+delete from transaction_details where transaction_id = p_transaction_id;
 return 1;
 end$$
 DELIMITER
@@ -55,8 +55,9 @@ create trigger updateQty
 after delete on transaction_details for each row
 begin
 declare total_qty int;
-set total_qty = (select total_qty from transactions where transaction_id = old.transaction_detail_id);
-update transaction SET total_qty = total_qty2 - old.qty where id = old.transaction_id;
+declare total_qty2 int;
+set total_qty = (select total_qty from transactions where transaction_id = transaction_detail_id);
+update transaction SET total_qty = total_qty - quantity where transaction_id = transaction_detail_id;
 end$$
 DELIMITER
 
