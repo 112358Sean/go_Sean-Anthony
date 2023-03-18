@@ -1,0 +1,31 @@
+#!/bin/sh
+
+name=$1-$(date '+%Y-%m-%d_%H.%M.%S')                                                                                                                 
+p=/
+
+$(mkdir $name)
+p=$name
+$(mkdir $p/about_me)
+$(mkdir $p/my_friends)
+$(mkdir $p/my_system_info)
+p=$name/about_me
+$(mkdir $p/personal)
+$(mkdir $p/professional)
+
+p=$p/personal
+$(touch $p/facebook.txt)
+$(echo https://www.facebook.com/$2 >> $p/facebook.txt)
+
+p=$name/about_me/professional
+$(touch $p/linkedin.txt)
+$(echo https://www.linkedin.com/in/$3 >> $p/linkedin.txt)
+
+p=$name/my_friends
+$(touch $p/list_of_my_friends.txt)
+$(curl https://gist.githubusercontent.com/tegarimansyah/e91f335753ab2c7fb12815779677e914/raw/94864388379fecee450fde26e3e73bfb2bcda194/list%2520of%2520my%2520friends.txt >> $p/list_of_my_friends.txt)
+
+p=$name/my_system_info
+$(touch $p/about_this_laptop.txt $p/internet_connection.txt)
+$(echo My username: $1 >> $p/about_this_laptop.txt)
+$(echo With host: $(uname -a) >> $p/about_this_laptop.txt )
+$(ping google.com -n 3 >> $p/internet_connection.txt)
