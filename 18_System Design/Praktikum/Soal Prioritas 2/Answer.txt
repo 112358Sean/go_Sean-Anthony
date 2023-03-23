@@ -1,0 +1,5 @@
+Query SQL -> SELECT * FROM users;
+
+1. Redis -> KEYS *Users*
+2. Neo4j -> MATCH (m:Users) RETURN m
+3. Cassandra -> SELECT * FROM keySpace.users;
