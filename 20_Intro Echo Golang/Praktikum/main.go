@@ -83,11 +83,9 @@ func UpdateUserController(c echo.Context) error {
 
   for i, user := range users {
     if user.Id == id {
-      // binding data
       updatedUser := User{}
       c.Bind(&updatedUser)
 
-      // update the user
       users[i].Name = updatedUser.Name
       users[i].Email = updatedUser.Email
       users[i].Password = updatedUser.Password
@@ -105,7 +103,6 @@ func UpdateUserController(c echo.Context) error {
 }
 // create new user
 func CreateUserController(c echo.Context) error {
-  // binding data
   user := User{}
   c.Bind(&user)
 
